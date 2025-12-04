@@ -16,7 +16,6 @@ const formStatus = document.getElementById('formStatus');
 let projects = [];
 
 // --- CITY MAPPING FOR PINS ---
-// UPDATED: Specific landmarks to force "Pin" drops on Google Maps
 const projectLocations = {
   "Highway Expansion": "Highway 401, Toronto, ON",
   "Airport Terminal": "Calgary International Airport, 2000 Airport Rd NE, Calgary, AB",
@@ -241,7 +240,6 @@ function openModal(project){
   // --- NEW MAP LOGIC (PINPOINT) ---
   const mapContainer = document.getElementById('modalMapContainer');
   if(mapContainer) {
-    // We use the specific city mapping to force a "Pin" result
     const query = encodeURIComponent(project.location);
     
     // Inject the Google Maps iframe with a specific query
@@ -280,16 +278,40 @@ modalCloseBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
 window.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
-// --- CONTACT FORM SUBMISSION (INLINE MESSAGE) ---
+// --- CONTACT FORM SUBMISSION (WITH EMAILJS) ---
 if(contactForm && formStatus) {
   contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    formStatus.innerHTML = "✅ Message sent! We will get back to you soon.";
-    formStatus.classList.add('show');
-    contactForm.reset();
-    setTimeout(() => {
-      formStatus.classList.remove('show');
-    }, 3000);
+    e.preventDefault(); // Stop page reload
+
+    // 1. Change button text to indicate loading
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerText;
+    submitBtn.innerText = 'Sending...';
+
+    // 🔴 REPLACE THESE TWO VARIABLES WITH YOUR ACTUAL IDS 🔴
+    const serviceID = 'service_ryos5b4';
+    const templateID = 'template_gat6woc';
+
+    // 2. Send the email
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        // SUCCESS: Show the green message
+        submitBtn.innerText = originalBtnText; // Reset button text
+        formStatus.innerHTML = "✅ Message sent! We will get back to you soon.";
+        formStatus.classList.add('show');
+        contactForm.reset(); // Clear the inputs
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          formStatus.classList.remove('show');
+        }, 3000);
+
+      }, (err) => {
+        // ERROR: Show an alert
+        submitBtn.innerText = originalBtnText;
+        alert('Failed to send message. Please try again.');
+        console.error('EmailJS Error:', err);
+      });
   });
 }
 

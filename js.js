@@ -197,8 +197,14 @@ function renderStats() {
       scales: {
         y: {
           beginAtZero: true,
+          // ⬇️ CHANGED: Set Max to 1.5 Billion
+          max: 1500000000, 
           grid: { color: 'rgba(255,255,255,0.1)' },
-          ticks: { color: '#ccc', stepSize: 1000000 }
+          ticks: { 
+            color: '#ccc', 
+            // ⬇️ CHANGED: Increased step size to 250 Million so the grid isn't crowded
+            stepSize: 250000000 
+          }
         },
         x: { ticks: { color: '#ccc', autoSkip: false, maxRotation: 45, minRotation: 45 } }
       },
@@ -288,7 +294,7 @@ if(contactForm && formStatus) {
     const originalBtnText = submitBtn.innerText;
     submitBtn.innerText = 'Sending...';
 
-    // 🔴 REPLACE THESE TWO VARIABLES WITH YOUR ACTUAL IDS 🔴
+    // 🔴 YOUR IDs ARE HERE:
     const serviceID = 'service_ryos5b4';
     const templateID = 'template_gat6woc';
 

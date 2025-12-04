@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Detectives</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img class="logo" src="https://i.imgur.com/V90Wemt.jpeg" alt="Data Detectives Logo" />
+      <h1><u>The Data Detectives</u></h1>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+        <li><a href="#about" class="nav-link" data-page="about">About Us</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle no-link nav-link">Our Projects ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#planned-projects" class="nav-link" data-page="planned-projects">Planned Projects</a></li>
+            <li><a href="#in-progress-projects" class="nav-link" data-page="in-progress-projects">In Progress Projects</a></li>
+            <li><a href="#project-stats" class="nav-link" data-page="project-stats">Project Stats & Graph</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact" class="nav-link" data-page="contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="page">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Uncovering Hidden Truths</h1>
+        <h2 class="hero-subtitle">Solving Political and Economic Puzzles with Precision.</h2>
+        <p class="hero-text">
+          We leverage advanced data architecture to bring transparency to the world's most complex infrastructure challenges.
+        </p>
+        
+        <div class="hero-buttons">
+          <button class="hero-btn" id="learnMoreBtn">Start the Investigation</button>
+          <button class="hero-btn secondary-btn" id="caseFilesBtn">See Projects</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page hidden">
+    <div class="about-layout">
+      <div class="section-box about-intro">
+        <h2>About Us</h2>
+        <p class="lead-text">We turn data into solutions. At The Data Detectives, our mission is to tackle global challenges by uncovering insights hidden in the numbers. Using advanced analytics and innovative thinking, we transform complexity into clarity, therefore helping create a smarter, more sustainable world.</p>
+        <div class="mission-vision-grid">
+          <div class="mv-item">
+            <h3>Our Mission</h3>
+            <p>Our mission is to uncover actionable insights from complex data and use them to solve global challenges. We strive to create smarter and sustainable solutions that make a real impact.</p>
+          </div>
+          <div class="mv-item">
+            <h3>Our Vision</h3>
+            <p>Our vision is a future where data-driven decisions empower progress, innovation, and equity across every corner of the globe.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-box team-box">
+        <h2>The Team</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <h3>Mitch Drysdale</h3>
+            <h4>Lead UX & Data Experience</h4>
+            <p>Designs intuitive interfaces and visual data models to help users understand and interact with complex infrastructure data.</p>
+          </div>
+          <div class="team-card">
+            <h3>Will Ferguson</h3>
+            <h4>Chief Storytelling Officer</h4>
+            <p>Crafts compelling presentations and visual narratives that communicate complex project insights.</p>
+          </div>
+          <div class="team-card">
+            <h3>Campbell Fasken</h3>
+            <h4>Head of Data Architecture</h4>
+            <p>Designs, builds, and maintains the backbone of the infrastructure project database.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANNED PROJECTS -->
+  <section id="planned-projects" class="page hidden">
+    <div class="section-box">
+      <h2>Planned Projects</h2>
+      <p class="section-desc">Future initiatives currently in the research and design phase.</p>
+      <div class="projects-grid" id="plannedProjectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- IN PROGRESS PROJECTS -->
+  <section id="in-progress-projects" class="page hidden">
+    <div class="section-box">
+      <h2>In Progress Projects</h2>
+      <p class="section-desc">Active investigations and developments currently underway.</p>
+      <div class="projects-grid" id="inProgressProjectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- PROJECT STATS PAGE -->
+  <section id="project-stats" class="page hidden">
+    <div class="section-box stats-layout">
+      <h2>Financial & Project Analytics</h2>
+      <div class="stats-container">
+        <!-- Chart Box -->
+        <div class="chart-box">
+          <canvas id="projectsChart"></canvas>
+        </div>
+        <!-- List Box -->
+        <div class="list-box">
+          <h3>Budget Overview</h3>
+          <ul id="allProjectsList" class="styled-list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="page hidden">
+    <div class="section-box contact-container">
+      <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>Ready to solve a puzzle? Reach out to our team for inquiries, collaborations, or data requests.</p>
+        <div class="info-item"><h4>📍 Headquarters</h4><p>100 Portsmouth Ave, Kingston, CA,</p></div>
+        <div class="info-item"><h4>📧 Email</h4><p>TheDataDetectives@gmail.com</p></div>
+        <div class="info-item"><h4>☎️ Phone</h4><p>(555)-019-2834</p></div>
+      </div>
+      <div class="contact-form-wrapper">
+        
+        <form id="contactForm">
+          <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="John Doe" required /></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="john@example.com" required /></div>
+          <div class="form-group"><label>Department</label>
+            <select name="department">
+              <option>General Inquiry</option>
+              <option>Data Request</option>
+              <option>Press & Media</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea name="message" placeholder="How can we help you?" required></textarea></div>
+          
+          <!-- FOOTER AREA WITH STATUS MESSAGE -->
+          <div class="form-footer">
+            <button type="submit" class="hero-btn">Send Message</button>
+            <div id="formStatus" class="status-message"></div>
+          </div>
+          
+        </form>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT POPUP MODAL -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content" role="document">
+      <button id="modalCloseBtn" class="modal-close" aria-label="Close details">&times;</button>
+      <h3 id="modalTitle"></h3>
+      <div class="modal-meta">
+        <span id="modalStatusBadge"></span>
+        <span id="modalBudget" class="modal-budget"></span>
+      </div>
+      <p id="modalDescription" style="margin-top:15px;"></p>
+      
+      <!-- NEW: Map Container (Empty by default) -->
+      <div id="modalMapContainer"></div>
+      
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 TheDataDetectives. All rights reserved.</p>
+  </footer>
+
+  <script src="js.js"></script>
+</body>
+</html>

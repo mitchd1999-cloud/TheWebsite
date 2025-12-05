@@ -31,8 +31,8 @@ const projectLocations = {
 
 // --- API & DATA FETCHING ---
 async function loadAllProjects() {
-  const jsonUrl = 'https://temp.staticsave.com/693189b82d07e.json';
-  const xmlUrl = 'https://temp.staticsave.com/693189a4413a7.xml';
+  const jsonUrl = 'https://temp.staticsave.com/6932cd216677e.json';
+  const xmlUrl = 'https://temp.staticsave.com/6932cd43a1458.xml';
 
   try {
     const [jsonResponse, xmlResponse] = await Promise.all([
@@ -329,3 +329,4 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   });
 });
 document.addEventListener('click', () => document.querySelectorAll('.dropdown.open').forEach(drop => drop.classList.remove('open')));
+
